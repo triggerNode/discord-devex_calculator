@@ -1,14 +1,13 @@
 import discord
 import os
-from dotenv import load_dotenv
 
 # --- SETTINGS ---
 # This is the only line you'll need to edit if the rate changes!
-DEVEX_RATE = 0.0038 
+DEVEX_RATE = 0.0035 
 # -----------------
 BUXTAX_URL = "https://bux.tax"
 
-load_dotenv()
+# No need for load_dotenv() on Railway, it handles variables automatically.
 bot = discord.Bot()
 
 @bot.event
@@ -39,4 +38,5 @@ async def devex(ctx, robux: int):
     # Send the response
     await ctx.respond(embed=embed)
 
+# Get the token from Railway's environment variables
 bot.run(os.getenv('DISCORD_TOKEN'))
